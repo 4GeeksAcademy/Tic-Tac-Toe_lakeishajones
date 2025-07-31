@@ -1,28 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import ChooseWeapon from "./ChooseWeapon";
+import Title from "./Title";
+import GameBoard from "./GameBoard";
 
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
 //create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-            
+  const [selectedWeapon, setSelectedWeapon] = useState("");
+  const [player1Name, setPlayer1Name] = useState("");
+  const [player2Name, setPlayer2Name] = useState("");
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+  const weaponSelection = (weapon, player1, player2) => {
+    setSelectedWeapon(weapon);
+    setPlayer1Name(player1);
+    setPlayer2Name(player2);
+  };
+
+  return (
+    <div
+      className="container-fluid min-vh-100 text-white d-flex flex-column align-items-center p-2"
+      style={{ background: "rgb(63, 62, 62)" }}
+    >
+      <Title />
+      {selectedWeapon !== "" ? (
+        <GameBoard
+          selectedWeapon={selectedWeapon}
+          player1Name={player1Name}
+          player2Name={player2Name}
+        />
+      ) : (
+        <ChooseWeapon weaponSelection={weaponSelection} />
+      )}
+    </div>
+  );
 };
 
 export default Home;

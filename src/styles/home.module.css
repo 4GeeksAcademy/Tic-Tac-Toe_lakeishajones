@@ -1,0 +1,8 @@
+.bg-weapon {
+  background:rgb(65, 62, 62);
+  width: 100px;
+}
+
+.btn-hover:hover {
+    background-color:rgb(126, 117, 117);
+}
